@@ -157,7 +157,7 @@ body.has-bg-image::before{content:'';position:fixed;inset:0;background:rgba(0,0,
 
 
 
-/* MOBILE FIT ONLY - ajustement écran iPhone sans changement d’esthétique */
+/* MOBILE STRICT SAFE AREA ONLY - aucun changement de disposition interne */
 html,
 body{
   width:100%;
@@ -166,94 +166,38 @@ body{
   -webkit-text-size-adjust:100%;
 }
 
+*, *::before, *::after{
+  box-sizing:border-box;
+}
+
 body{
   min-height:100svh;
-  padding-bottom:calc(env(safe-area-inset-bottom) + 72px);
+  padding-bottom:calc(env(safe-area-inset-bottom) + 76px);
 }
 
 #topbar{
-  width:100%;
   max-width:100%;
-  padding-left:calc(env(safe-area-inset-left) + 14px);
-  padding-right:calc(env(safe-area-inset-right) + 14px);
+  padding-left:calc(env(safe-area-inset-left) + 12px);
+  padding-right:calc(env(safe-area-inset-right) + 12px);
 }
 
 .page{
-  width:100%;
   max-width:100%;
   overflow-x:hidden;
-  padding-left:calc(env(safe-area-inset-left) + 14px);
-  padding-right:calc(env(safe-area-inset-right) + 14px);
+  padding-left:calc(env(safe-area-inset-left) + 12px);
+  padding-right:calc(env(safe-area-inset-right) + 12px);
 }
 
 #paused-banner{
-  margin-left:calc(env(safe-area-inset-left) + 14px);
-  margin-right:calc(env(safe-area-inset-right) + 14px);
+  margin-left:calc(env(safe-area-inset-left) + 12px);
+  margin-right:calc(env(safe-area-inset-right) + 12px);
 }
 
 #bottombar{
-  width:100%;
   max-width:100%;
   padding-left:env(safe-area-inset-left);
   padding-right:env(safe-area-inset-right);
   padding-bottom:calc(env(safe-area-inset-bottom) + 8px);
-}
-
-.stat-row,
-#week-dots,
-#day-header,
-.hr,
-.edit-row,
-.moti,
-.panel,
-.period-toggle,
-.bg-actions,
-.bg-grid{
-  max-width:100%;
-}
-
-.sc,
-.hr,
-.edit-row,
-.tbtn,
-.nbtn,
-.wd-col,
-.day-chip,
-.week-all{
-  min-width:0;
-}
-
-.hr-name,
-.edit-input{
-  min-width:0;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-@media (max-width:390px){
-  #topbar{
-    padding-left:calc(env(safe-area-inset-left) + 12px);
-    padding-right:calc(env(safe-area-inset-right) + 12px);
-  }
-
-  .page{
-    padding-left:calc(env(safe-area-inset-left) + 12px);
-    padding-right:calc(env(safe-area-inset-right) + 12px);
-  }
-
-  #week-dots{
-    padding-left:6px;
-    padding-right:6px;
-  }
-
-  .wd-dot{
-    width:28px;
-    height:28px;
-  }
-
-  .bg-grid{
-    grid-template-columns:repeat(4,minmax(0,1fr));
-  }
 }
 
 </style>
