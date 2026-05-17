@@ -147,7 +147,7 @@ body.has-bg{background-size:cover!important;background-position:center!important
 .eopt{font-size:24px;text-align:center;padding:5px;cursor:pointer;border-radius:7px}
 .eopt:active{background:var(--bg3)}
 
-/* MOBILE RECALIBRAGE ONLY - format téléphone sans modification d'interface */
+/* MOBILE TOP FIX ONLY - correction haut écran iPhone sans modification de l'interface */
 html,
 body{
   width:100%;
@@ -162,14 +162,17 @@ body{
 
 body{
   min-height:100svh;
+  padding-top:env(safe-area-inset-top);
   padding-bottom:calc(env(safe-area-inset-bottom) + 76px);
 }
 
 #topbar{
   width:100%;
   max-width:100%;
+  padding-top:calc(env(safe-area-inset-top) + 12px);
   padding-left:calc(env(safe-area-inset-left) + 12px);
   padding-right:calc(env(safe-area-inset-right) + 12px);
+  margin-top:0;
 }
 
 .page{
