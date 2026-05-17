@@ -46,8 +46,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg
 #paused-banner{background:rgba(245,158,11,.1);border:.5px solid rgba(245,158,11,.3);border-radius:10px;padding:8px 14px;margin:8px 14px 0;font-size:12px;color:var(--amber);text-align:center;display:none}
 
 /* PAGES */
-.page{display:none;padding:12px 14px calc(var(--sb) + 90px);overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y}
-.page.active{display:block}
+.page{display:none}
+.page.active{display:flex;flex-direction:column;height:calc(100dvh - 57px);overflow:hidden}
+#page-today{padding:0}
+.today-fixed{padding:12px 14px 0;flex-shrink:0}
+#habits-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;padding:0 14px calc(var(--sb) + 90px)}
+#page-stats,#page-edit{padding:12px 14px 0;overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y}
 
 /* STAT CARDS */
 .stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
@@ -100,7 +104,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg
 .hr.done .hr-name{color:var(--text2);text-decoration:line-through;text-decoration-color:var(--text3)}
 
 /* BOTTOM BAR */
-#bottombar{position:fixed;bottom:0;left:0;right:0;padding:8px 0 calc(var(--sb)+8px);background:rgba(10,10,10,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:.5px solid var(--border);display:flex;z-index:50}
+#bottombar{position:fixed;bottom:0;left:0;right:0;padding:8px 0 calc(var(--sb)+16px);background:rgba(10,10,10,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:.5px solid var(--border);display:flex;z-index:50}
 .tbtn{flex:1;border:none;background:none;color:var(--text3);font-size:9px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0;cursor:pointer;transition:color .15s}
 .tbtn.on{color:var(--green)}
 .tbtn svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -177,21 +181,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg
 
 <!-- TODAY -->
 <div id="page-today" class="page active">
-  <div class="stat-row">
-    <div class="sc g"><div class="sc-label">Aujourd'hui</div><div class="sc-val" id="s-today">–</div></div>
-    <div class="sc a"><div class="sc-label">Semaine</div><div class="sc-val" id="s-week">–</div></div>
-    <div class="sc"><div class="sc-label">Série</div><div class="sc-val" id="s-streak">–</div></div>
+  <div class="today-fixed">
+    <div class="stat-row">
+      <div class="sc g"><div class="sc-label">Aujourd'hui</div><div class="sc-val" id="s-today">–</div></div>
+      <div class="sc a"><div class="sc-label">Semaine</div><div class="sc-val" id="s-week">–</div></div>
+      <div class="sc"><div class="sc-label">Série</div><div class="sc-val" id="s-streak">–</div></div>
+    </div>
+    <div id="week-strip"></div>
+    <div id="day-header">
+      <div id="day-name"></div><div id="day-date"></div><div id="day-badge"></div>
+    </div>
+    <div id="prog-wrap">
+      <div id="prog-top"><span>Progression</span><span id="prog-val"></span></div>
+      <div id="prog-track"><div id="prog-fill" style="width:0%"></div></div>
+    </div>
+    <div class="sec-title">Habitudes</div>
   </div>
-  <div id="week-strip"></div>
-  <div id="day-header">
-    <div id="day-name"></div><div id="day-date"></div><div id="day-badge"></div>
+  <div id="habits-scroll">
+    <div id="habits-list"></div>
   </div>
-  <div id="prog-wrap">
-    <div id="prog-top"><span>Progression</span><span id="prog-val"></span></div>
-    <div id="prog-track"><div id="prog-fill" style="width:0%"></div></div>
-  </div>
-  <div class="sec-title">Habitudes</div>
-  <div id="habits-list"></div>
 </div>
 
 <!-- STATS -->
