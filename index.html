@@ -21,6 +21,10 @@
 input{-webkit-user-select:text;user-select:text;touch-action:auto}
 html{background:var(--bg);width:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);min-height:100dvh;overscroll-behavior:none;padding-bottom:calc(var(--sb)+72px)}
+@media all and (display-mode: standalone){
+  body{padding-bottom:calc(var(--sb)+60px)}
+  #bottombar{padding:6px 0 calc(var(--sb)+4px)}
+}
 #wp-layer{position:fixed;inset:0;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transition:opacity .3s;pointer-events:none}
 .topbar-wrap,.page,#bottombar,#paused-banner,#epicker{position:relative;z-index:1}
 
